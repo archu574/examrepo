@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dashboard</title>
+  </head>
+  <style>
+    table,
+    th,
+    td{
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <h1>Hello, {{request.session.name}}!</h1>
+    <a href="/appointments/logout">Logout</a>
+    <p></p>
+
+    <h3>Here are your appointments for today,{{x.created_at}}:</h3>
+
+    <table>
+      <tr>
+        <th>Tasks</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      {% for x in myappttoday %}
+      <tr>
+        <td>{{x.task}}</td>
+        <td>{{x.timee}}</td>
+        <td>{{x.status}}</td>
+        <td> <a href="/appointments/edit/{{x.id}}">Edit</a> <a href="/appointments/delete/{{x.id}}">Delete</a> </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+
+
+    <p></p>
+    <p></p>
+
+    <h3>Your Other Appointments:</h3>
+
+    <table>
+      <tr>
+        <th>Tasks</th>
+        <th>Date</th>
+        <th>Time</th>
+
+      </tr>
+      {% for x in otherappt %}
+      <tr>
+        <td>{{x.task}}</td>
+        <td>{{x.datee}}</td>
+        <td>{{x.timee}}</td>
+      </tr>
+      {%endfor%}
+
+    </table>
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+
+    <h3>Add Appointment</h3>
+    <form class="" action="/appointments/addappt" method="post">
+      {% csrf_token %}
+      Date:<input type="date" name="datedata" value="">
+      Time:<input type="time" name="timedata" value="">
+      Tasks:<input type="text" name="taskdata" value="">
+      <!-- <input type="hidden" name="thehiddenadd" value="{{request.session.id}}"> -->
+      <input type="submit" name="add" value="Add">
+
+    </form>
+  </body>
+</html>

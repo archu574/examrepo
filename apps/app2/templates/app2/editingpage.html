@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>editingpage</title>
+  </head>
+  <body>
+    <form class="" action="/appointments/update/{{x.id}}" method="post">
+      <a href="/appointments/dashboard">Dashboard</a>
+      <a href="/appointments/logout">Logout</a>
+      Task:<input type="text" name="taskdata" value="{{x.task}}">
+      Status:<input type="option" name="status_choices" value="{{x.status}}">
+      Date:<input type="date" name="datedata" value="{{x.datee}}">
+      Time:<input type="time" name="timedata" value="{{x.timee}}">
+      <input type="hidden" name="hiddenv" value="{{x.id}}">
+      <input type="submit" name="" value="Update">
+
+    </form>
+  </body>
+</html>
